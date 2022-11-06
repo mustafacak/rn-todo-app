@@ -1,13 +1,19 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {Text, TouchableOpacity} from 'react-native';
 import styles from './TodoItem.styles';
 
-const TodoItem = ({todo}) => {
+const TodoItem = ({todo, toggle}) => {
   // render
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>{todo.title}</Text>
-    </View>
+    <TouchableOpacity
+      style={todo.isActive ? styles.active : styles.passive}
+      onPress={() => {
+        toggle(todo.id);
+      }}>
+      <Text style={todo.isActive ? styles.title : styles.titlePassive}>
+        {todo.title}
+      </Text>
+    </TouchableOpacity>
   );
 };
 

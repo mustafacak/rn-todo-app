@@ -7,32 +7,65 @@ const dataList = [
   {
     id: '1',
     title: 'Buy milk',
+    isActive: true,
   },
   {
     id: '2',
     title: 'Buy cast',
+    isActive: false,
   },
   {
     id: '3',
     title: 'Buy asdcat',
+    isActive: true,
   },
 ];
 const App = () => {
-  const [todoCount, setTodoCount] = useState(0);
+  const [todos, setTodos] = useState(dataList);
+  const [text, setText] = useState('');
 
-  const renderTodo = ({item}) => <TodoItem todo={item} />;
+  const renderTodo = ({item}) => <TodoItem todo={item} toggle={toggleTodo} />;
+
+  const addTodo = () => {
+    setTodos([...todos, {id: Date.now(), title: text, isActive: true}]);
+    console.log(text);
+    setText('');
+  };
+
+  const toggleTodo = todo => {
+    console.log('test + ' + todo);
+    const newTodos = todos.map((item, index) => {
+      if (item.id === todo) {
+        console.log('item bu:' + item.title);
+        item.isActive = !item.isActive;
+      }
+      return item;
+    });
+    setTodos(newTodos);
+  };
+
+  const todosLength = () => {
+    let count = 0;
+    todos.forEach(item => {
+      if (item.isActive === true) {
+        count += 1;
+        console.log(item.title);
+      }
+    });
+    return count;
+  };
 
   // render
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerText}>Yapılacaklar</Text>
-        <Text style={styles.headerText}>{todoCount}</Text>
+        <Text style={styles.headerText}>{todosLength()}</Text>
       </View>
       <View style={styles.flatView}>
-        <FlatList data={dataList} renderItem={renderTodo} />
+        <FlatList data={todos} renderItem={renderTodo} />
       </View>
-      <InputBar />
+      <InputBar add={addTodo} text={text} setText={setText} />
     </SafeAreaView>
   );
 };
