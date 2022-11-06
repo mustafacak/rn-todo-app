@@ -20,6 +20,11 @@ export default StyleSheet.create({
     borderRadius: 10,
     padding: 15,
   },
+  kaydetBtnActive: {
+    backgroundColor: 'orange',
+    borderRadius: 10,
+    padding: 15,
+  },
   kaydetBtnText: {
     color: '#fff',
     fontSize: 18,
