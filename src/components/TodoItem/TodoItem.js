@@ -8,11 +8,15 @@ const TodoItem = ({todo, toggle, remove}) => {
     <View>
       <Pressable
         style={todo.isActive ? styles.active : styles.passive}
-        onLongPress={() => {remove(todo.id)}}
+        onLongPress={() => {
+          remove(todo.id);
+        }}
         onPress={() => {
           toggle(todo.id);
         }}>
-        <Text style={todo.isActive ? styles.title : styles.titlePassive}>{todo.title}</Text>
+        <Text style={todo.isActive ? styles.title : styles.titlePassive}>
+          {todo.title}
+        </Text>
       </Pressable>
     </View>
   );

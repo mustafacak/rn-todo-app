@@ -16,7 +16,9 @@ const InputBar = ({text, setText, add}) => {
         placeholderTextColor={'#fff'}
         placeholder="Yapılacak.."
       />
-      <TouchableOpacity onPress={add} style={!btnStyle ? styles.kaydetBtn : styles.kaydetBtnActive}>
+      <TouchableOpacity
+        onPress={add}
+        style={!btnStyle ? styles.kaydetBtn : styles.kaydetBtnActive}>
         <Text style={styles.kaydetBtnText}>Kaydet</Text>
       </TouchableOpacity>
     </View>

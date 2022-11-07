@@ -33,23 +33,19 @@ const App = () => {
     text.trim() !== ''
       ? setTodos([...todos, {id: Date.now(), title: text, isActive: true}])
       : null;
-    //console.log(text);
     setText('');
   };
 
   const removeTodo = id => {
-    console.log('remove id: ', id);
-    const newTodos = todos.filter((item, index) => {
+    const newTodos = todos.filter(item => {
       return item.id !== id;
     });
-    console.log(newTodos);
     setTodos(newTodos);
   };
 
   const toggleTodo = todo => {
     const newTodos = todos.map((item, index) => {
       if (item.id === todo) {
-        console.log('item bu:' + item.title + 'index bu:' + index);
         item.isActive = !item.isActive;
       }
       return item;
@@ -62,7 +58,6 @@ const App = () => {
     todos.forEach(item => {
       if (item.isActive === true) {
         count += 1;
-        console.log(item.title);
       }
     });
     return count;
