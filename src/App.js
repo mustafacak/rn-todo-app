@@ -16,27 +16,40 @@ const dataList = [
   },
   {
     id: '3',
-    title: 'Buy asdcat',
+    title: 'Buy cat',
     isActive: true,
   },
 ];
 const App = () => {
   const [todos, setTodos] = useState(dataList);
   const [text, setText] = useState('');
+  const [todoCount, setTodoCount] = useState(0);
 
-  const renderTodo = ({item}) => <TodoItem todo={item} toggle={toggleTodo} />;
+  const renderTodo = ({item}) => (
+    <TodoItem todo={item} toggle={toggleTodo} remove={removeTodo} />
+  );
 
   const addTodo = () => {
-    setTodos([...todos, {id: Date.now(), title: text, isActive: true}]);
-    console.log(text);
+    text.trim() !== ''
+      ? setTodos([...todos, {id: Date.now(), title: text, isActive: true}])
+      : null;
+    //console.log(text);
     setText('');
   };
 
+  const removeTodo = id => {
+    console.log('remove id: ', id);
+    const newTodos = todos.filter((item, index) => {
+      return item.id !== id;
+    });
+    console.log(newTodos);
+    setTodos(newTodos);
+  };
+
   const toggleTodo = todo => {
-    console.log('test + ' + todo);
     const newTodos = todos.map((item, index) => {
       if (item.id === todo) {
-        console.log('item bu:' + item.title);
+        console.log('item bu:' + item.title + 'index bu:' + index);
         item.isActive = !item.isActive;
       }
       return item;

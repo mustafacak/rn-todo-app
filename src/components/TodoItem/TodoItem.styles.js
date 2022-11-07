@@ -26,4 +26,7 @@ export default StyleSheet.create({
     borderRadius: 5,
     margin: 5,
   },
+  hold: {
+    opacity: 0.5,
+  },
 });
