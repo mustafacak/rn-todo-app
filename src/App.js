@@ -6,17 +6,17 @@ import TodoItem from './components/TodoItem';
 const dataList = [
   {
     id: '1',
-    title: 'Buy milk',
+    title: 'Markete git',
     isActive: true,
   },
   {
     id: '2',
-    title: 'Buy cast',
+    title: 'Evi temizle',
     isActive: false,
   },
   {
     id: '3',
-    title: 'Buy cat',
+    title: 'Araştırma yap',
     isActive: true,
   },
 ];
